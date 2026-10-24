@@ -11,27 +11,27 @@ void solve(){
 	stack<int> st;
 	vector<int> ans;
 	for(int i = 1; i <= s.length(); i++){
-		if(s[i-1] == '3') continue;
-		else if(s[i-1] == '1') st.push(i);
+		// if(s[i-1] == '3') continue;
+		if(s[i-1] == '1') st.push(i);
 		else if(s[i-1] == '2'){
-			if(st.size() > 0){
+			if(!st.empty()){
 				st.pop();
-				st.push(i);
+				ans.push_back(i);
 			}
 			// else st.push(i);
 		}
 	}
-	if(st.size() > 0){
-		cout<<st.size()<<endl;
-		while(st.size() > 0){
-			ans.push_back(st.top());
-			st.pop();
-		}
-		sort(ans.begin(), ans.end());
-		for(int i:ans) cout<<i<<" ";
-		cout<<endl;
+	while(!st.empty()){
+		ans.push_back(st.top());
+		st.pop();
 	}
-	else cout<<0<<endl<<endl;
+	sort(ans.begin(), ans.end());
+	// if(ans.size() == 0) cout<<0<<endl;
+	// else {
+	// }
+	cout<<ans.size()<<endl;
+	for(int i:ans) cout<<i<<" ";
+	cout<<endl;
 	
 	return ;
 
@@ -43,3 +43,4 @@ int main(){
 		solve();
 	}
 }
+
